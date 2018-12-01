@@ -35,6 +35,17 @@ router.post('/', function(req, res, next) {
 
 });
 
+router.get('/:id/:proc/:des/:km/edit', function(req, res, next) {
+  Migrante.findOneAndUpdate({_id: req.params.id},{procedencia: req.params.proc,destino: req.params.des,km: req.params.km},function(err,up,result){
+    if(err){
+      console.log(err);
+      res.status(400).redirect('/api/Migrantes');
+    }else{
+      res.status(200).redirect('/api/Migrantes');
+    }
+  });
+});
+
 router.get('/:id/del', function(req, res, next) {
   Migrante.findByIdAndDelete({_id: req.params.id},function(err, response){
     if(err){

@@ -4,22 +4,23 @@ block content
     header.header
         h1= title
     .main
-        form.formulario(method='POST')
-            label(for='proc') Procedencia
-            input.inputs(type='text',name='proc',id='proc',placeholder='Ayutuxtepeque')
-            label(for='des') Destino
-            input.inputs(type='text',name='des',id='des',placeholder='Minnesota')
-            label(for='km') Km recorridos
-            input.inputs(type='number',name='km',id='km',placeholder='25')
-            input.enviar(type='submit',name='enviar',id='km',value='Guardar')
-        table.tabla#tabla
-            tr
-                td ID
-                td PROCEDENCIA
-                td DESTINO
-                td KM
-                td OPCIONES
-            tbody
+        form.formulario(id='formulario',method='POST')
+            .container-inputs
+                label(for='proc') Procedencia
+                input.inputs(type='text',name='proc',id='proc',placeholder='Ayutuxtepeque')
+                label(for='des') Destino
+                input.inputs(type='text',name='des',id='des',placeholder='Minnesota')
+                label(for='km') Km recorridos
+                input.inputs(type='number',name='km',id='km',placeholder='25')
+                input.enviar(type='submit',name='enviar',id='send',value='Guardar')
+            table.tabla#tabla
+                tr
+                    td ID
+                    td PROCEDENCIA
+                    td DESTINO
+                    td KM
+                    td OPCIONES
+                tbody
     script.
         var migrantes = JSON.parse('#{migrantes}'.replace(/&quot;/g,'"'));
         console.log(migrantes);
@@ -46,20 +47,35 @@ block content
                 celda = document.createElement('td');
                 texto = document.createTextNode(migrantes[i].km);
                 celda.appendChild(texto);
-                fila.appendChild(celda);
+                fila.appendChild(celda);          
 
                 celda = document.createElement('td');
                 redi = document.createElement('a');
-                redi.href = '/api/Migrantes/'+migrantes[i]._id+'/edit';
                 texto = document.createElement('i');
+                redi.name = migrantes[i]._id;
                 texto.className += 'far fa-edit';
                 texto.name = migrantes[i]._id;
 
                 redi2 = document.createElement('a');
                 redi2.href = '/api/Migrantes/'+migrantes[i]._id+'/del';
                 var texto2 = document.createElement('i');
-                texto2.name = migrantes[i]._id
+                texto2.name = migrantes[i]._id;
                 texto2.className += 'fas fa-user-minus';
+
+                redi.addEventListener('click',function(){
+                    var nproc = document.getElementById('proc').value;
+                    console.log(nproc);
+                    var ndes = document.getElementById('des').value;
+                    var km = document.getElementById('km').value;
+
+                    if(nproc == "" || ndes == "" || km == ""){
+                        alert('ERROR llene todos los campos (Si no se van a modificar escriba el mismo valor).');
+                    }else{
+                        this.href = '/api/Migrantes/'+this.name+'/'+nproc+'/'+ndes+'/'+km+'/edit';
+                    }
+                    
+                });
+
 
                 redi.appendChild(texto);
                 redi2.appendChild(texto2);
