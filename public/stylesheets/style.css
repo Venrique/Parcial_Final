@@ -1,7 +1,8 @@
 body {
   margin: 0 auto;
   width: 80%;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: burlywood;
 }
 
 a {
@@ -12,7 +13,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aquamarine;
+  background-color: rgb(230, 200, 164);
   height: 5em;
   border-radius: 10px;
 }
@@ -32,20 +33,20 @@ header {
   border: none;
   padding: 0.5em;
   border-radius: 5px;
-  background-color: darkolivegreen;
+  background-color: rgb(34, 150, 63);
   color: #fff;
 }
 
 .tabla{
   border: 1px solid #000;
-  background-color: cadetblue;
+  background-color: rgb(211, 211, 211);
   margin-top: 2em;
   width: 100%;
   border-radius: 5px;
 }
 
 td {
-  font-size: 1.5em;
+  font-size: 1.2em;
   height: 2em;
 }
 
@@ -60,4 +61,11 @@ i{
 
 a{
   color: #000;
+}
+
+.inputs{
+  border:none;
+  border-radius: 5px;
+  padding: 0.5em;
+  box-shadow: 0 0 5px #000;
 }
