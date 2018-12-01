@@ -32,6 +32,8 @@ header {
 }
 
 .tabla{
+  border: 1px solid #000;
+  background-color: cadetblue;
   margin-top: 2em;
   width: 100%;
 }

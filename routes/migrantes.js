@@ -5,7 +5,15 @@ const Migrante = require('../models/migrantes.js')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('Migrantes', { title: 'Administrador de Migrantes' });
+  Migrante.find({},function(err,migrantes){
+    if(err){
+      console.log(err);
+      res.render('Migrantes', { title: 'Administrador de Migrantes' });
+    }else{
+      console.log(JSON.stringify(migrantes));
+      res.render('Migrantes', { title: 'Administrador de Migrantes', migrantes: JSON.stringify(migrantes) });
+    }   
+  });
 });
 
 router.post('/', function(req, res, next) {

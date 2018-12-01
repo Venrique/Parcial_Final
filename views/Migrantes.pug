@@ -18,3 +18,6 @@ block content
                 td PROCEDENCIA
                 td DESTINO
                 td KM
+    script.
+        var migrantes = JSON.parse('#{migrantes}'.replace(/&quot;/g,'"'));
+        console.log(migrantes);
