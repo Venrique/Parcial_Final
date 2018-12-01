@@ -37,3 +37,16 @@ header {
   margin-top: 2em;
   width: 100%;
 }
+
+td {
+  font-size: 1.5em;
+  height: 2em;
+}
+
+tbody{
+  font-weight: bold;
+}
+
+i{
+  cursor: pointer;
+}

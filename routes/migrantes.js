@@ -8,10 +8,10 @@ router.get('/', function(req, res, next) {
   Migrante.find({},function(err,migrantes){
     if(err){
       console.log(err);
-      res.render('Migrantes', { title: 'Administrador de Migrantes' });
+      res.status(500).render('Migrantes', { title: 'Administrador de Migrantes' });
     }else{
       console.log(JSON.stringify(migrantes));
-      res.render('Migrantes', { title: 'Administrador de Migrantes', migrantes: JSON.stringify(migrantes) });
+      res.status(200).render('Migrantes', { title: 'Administrador de Migrantes', migrantes: JSON.stringify(migrantes) });
     }   
   });
 });
@@ -28,10 +28,10 @@ router.post('/', function(req, res, next) {
     if(result){
       console.log(result);
     }
-    res.redirect('/api/Migrantes');
+    res.status(200).redirect('/api/Migrantes');
   }).catch(err => {
     console.log(err);
-    res.redirect('/api/Migrantes');
+    res.status(400).redirect('/api/Migrantes');
   })
 
 });

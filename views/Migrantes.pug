@@ -12,12 +12,50 @@ block content
             label(for='km') Km recorridos
             input.inputs(type='number',name='km',id='km',placeholder='25')
             input.enviar(type='submit',name='enviar',id='km',value='Guardar')
-        table.tabla
+        table.tabla#tabla
             tr
                 td ID
                 td PROCEDENCIA
                 td DESTINO
                 td KM
+                td OPCIONES
+            tbody
     script.
         var migrantes = JSON.parse('#{migrantes}'.replace(/&quot;/g,'"'));
         console.log(migrantes);
+        var tabla = document.getElementById('tabla');
+
+        for(var i=0;i<migrantes.length;i++){
+            var fila = document.createElement('tr');
+            
+                var celda = document.createElement('td');
+                var texto = document.createTextNode(migrantes[i]._id);
+                celda.appendChild(texto);
+                fila.appendChild(celda);
+
+                celda = document.createElement('td');
+                texto = document.createTextNode(migrantes[i].procedencia);
+                celda.appendChild(texto);
+                fila.appendChild(celda);
+
+                celda = document.createElement('td');
+                texto = document.createTextNode(migrantes[i].destino);
+                celda.appendChild(texto);
+                fila.appendChild(celda);
+
+                celda = document.createElement('td');
+                texto = document.createTextNode(migrantes[i].km);
+                celda.appendChild(texto);
+                fila.appendChild(celda);
+
+                celda = document.createElement('td');
+                texto = document.createElement('i');
+                texto.className += 'far fa-edit';
+                celda.appendChild(texto);
+                fila.appendChild(celda);
+            
+            tabla.appendChild(fila);
+        }
+
+        
+        
