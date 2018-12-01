@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    header.header
+        h1= title
+    .main
+        label(for='proc') Procedencia
+        input.inputs(type='text',name='proc',id='proc',placeholder='Ayutuxtepeque')
+        label(for='des') Destino
+        input.inputs(type='text',name='des',id='des',placeholder='Minnesota')
+        label(for='km') Km recorridos
+        input.inputs(type='text',name='km',id='km',placeholder='25')
