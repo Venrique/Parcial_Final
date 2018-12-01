@@ -14,9 +14,11 @@ header {
   align-items: center;
   background-color: aquamarine;
   height: 5em;
+  border-radius: 10px;
 }
 
 .formulario{
+  margin-top: 1em;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -49,4 +51,9 @@ tbody{
 
 i{
   cursor: pointer;
+  padding-left: 0.7em;
+}
+
+a{
+  color: #000;
 }

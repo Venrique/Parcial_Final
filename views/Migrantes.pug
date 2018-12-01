@@ -49,9 +49,22 @@ block content
                 fila.appendChild(celda);
 
                 celda = document.createElement('td');
+                redi = document.createElement('a');
+                redi.href = '/api/Migrantes/'+migrantes[i]._id+'/edit';
                 texto = document.createElement('i');
                 texto.className += 'far fa-edit';
-                celda.appendChild(texto);
+                texto.name = migrantes[i]._id;
+
+                redi2 = document.createElement('a');
+                redi2.href = '/api/Migrantes/'+migrantes[i]._id+'/del';
+                var texto2 = document.createElement('i');
+                texto2.name = migrantes[i]._id
+                texto2.className += 'fas fa-user-minus';
+
+                redi.appendChild(texto);
+                redi2.appendChild(texto2);
+                celda.appendChild(redi);
+                celda.appendChild(redi2);
                 fila.appendChild(celda);
             
             tabla.appendChild(fila);
